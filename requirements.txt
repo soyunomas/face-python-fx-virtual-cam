@@ -1,0 +1,7 @@
+# requirements.txt
+
+opencv-python
+mediapipe
+numpy
+pyvirtualcam
+Pillow
