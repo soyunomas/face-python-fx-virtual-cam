@@ -6,7 +6,7 @@ Aplica efectos faciales en tiempo real (desenfoque, pixelado, emojis) a tu webca
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <!-- TODO: Considera añadir un GIF o captura de pantalla aquí mostrando los efectos -->
-<!-- <p align="center"><img src="demo.gif" alt="Demo Effects"></p> -->
+<p align="center"><img src="screenshot.png" alt="Demo Effects"></p>
 
 ## 🚀 Características
 
@@ -16,6 +16,8 @@ Aplica efectos faciales en tiempo real (desenfoque, pixelado, emojis) a tu webca
 *   **Controles Interactivos:** Cambia modos y ajusta parámetros al vuelo ⌨️.
 *   **Ajuste Fino:** Padding, offset vertical, tamaño de pixelado 🔧.
 *   **Configurable:** Opciones de línea de comandos.
+
+<p align="center"><img src="screenshot1.png" alt="Demo Effects"></p>
 
 ## 🐧 Instalación (Linux Mint / Ubuntu / Debian-based)
 
