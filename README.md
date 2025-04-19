@@ -91,7 +91,7 @@ pip install -r requirements.txt
 4.  **Ejecuta el script:**
 
     ```bash
-    python webcam_emoji.py [OPCIONES]
+    python face_blur_webcam.py [OPCIONES]
     ```
 
 **Opciones Comunes:**
@@ -109,7 +109,7 @@ pip install -r requirements.txt
 
 ```bash
 # Usar cámara 0, vcam 10, empezar en modo emoji (fuente en dir actual)
-python webcam_emoji.py --webcam-id 0 --vcam-id 10 --start-mode emoji
+python face_blur_webcam.py --webcam-id 0 --vcam-id 10 --start-mode emoji
 ```
 
 *   Se abrirá una ventana de OpenCV.
@@ -133,12 +133,12 @@ python webcam_emoji.py --webcam-id 0 --vcam-id 10 --start-mode emoji
 
 ## ⚠️ Solución de Problemas Comunes
 
-*   **Error `RuntimeError: ... not a video output device` / `Device or resource busy`:** Carga `v4l2loopback` con `exclusive_caps=1` (Paso 1). Puede que necesites descargar (`sudo modprobe -r`) y recargar.
+*   **Error `RuntimeError: ... not a video output device` / `Device or resource busy`:** Carga `v4l2loopback` con `exclusive_caps=1` (Paso 1). Puede que necesites descargar (`sudo modprobe -r v4l2loopback`) y recargar.
 *   **Cámara virtual no aparece:** Verifica `ls /dev/video*`, `exclusive_caps=1`, reinicia la app destino.
 *   **Modo Emoji no funciona:** Confirma que descargaste `NotoColorEmoji.ttf` correctamente (Paso 3) y que `Pillow` está instalado (`pip show Pillow` en `venv`). Verifica el tamaño del archivo descargado.
 *   **Error `wget: command not found`:** Instala wget: `sudo apt install wget`.
 *   **Bajo rendimiento (FPS bajos):** Cierra apps pesadas, considera usar menor resolución de webcam.
-*   **Error `ImportError: No module named 'cv2'`:** Asegúrate de **activar** `venv` (`source venv/bin/activate`) **antes** de ejecutar `pip install` y `python webcam_emoji.py`.
+*   **Error `ImportError: No module named 'cv2'`:** Asegúrate de **activar** `venv` (`source venv/bin/activate`) **antes** de ejecutar `pip install` y `python face_blur_webcam.py`.
 
 ## 📜 Licencia
 
