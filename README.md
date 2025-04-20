@@ -1,8 +1,8 @@
 # face-python-fx-virtual-cam 🎭
 
-Aplica efectos faciales en tiempo real (desenfoque, pixelado, emojis), y un enjambre de insectos voladores que evitan tu cara 🦋, a tu webcam usando Python, MediaPipe y OpenCV, enviando la salida a una **cámara virtual**. 😜✨
+Aplica efectos faciales en tiempo real (desenfoque, pixelado, emojis), y un enjambre de insectos voladores que evitan tu cara 🦋, a tu webcam usando Python, MediaPipe y OpenCV, enviando la salida a una **cámara virtual** (`webcam-emoji.py`). 😜✨
 
-[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ![Demo Emoji-Insects](screenshot.png)
 
@@ -15,12 +15,12 @@ Aplica efectos faciales en tiempo real (desenfoque, pixelado, emojis), y un enja
     *   **Blur** 🌫️: Desenfoque Gaussiano configurable.
     *   **Pixelate** 👾: Efecto de pixelado con tamaño de bloque ajustable.
     *   **Emoji Overlay** 😂: Superpone un emoji grande sobre la cara (seleccionable).
-    *   *Activables/Desactivables*: Los efectos faciales (Blur/Pixel/Emoji) se pueden apagar manteniendo la detección. (`[T]`)
+    *   *Activables/Desactivables*: Los efectos faciales (Blur/Pixel/Emoji) se pueden apagar manteniendo la detección (`[T]`).
 *   **Efecto de Insectos Voladores:**
     *   Superpone emojis de insectos (🦋, 🦟, 🪰, 🐝, 🐞) que vuelan por la pantalla.
     *   **Evitación de Cabeza:** Los insectos evitan activamente la región de la cabeza detectada.
     *   Número y tipo de insectos ajustables.
-    *   *Activables/Desactivables* independientemente de los efectos faciales. (`[Y]`)
+    *   *Activables/Desactivables* independientemente de los efectos faciales (`[Y]`).
 *   **Salida a Cámara Virtual:** Envía el vídeo procesado a un dispositivo `/dev/videoX` usando `pyvirtualcam`.
 *   **Controles Interactivos:** Cambia modos y ajusta parámetros al vuelo usando el teclado en la ventana de previsualización.
 *   **Ajuste Fino:** Controla el padding (margen) alrededor de la cara, el offset vertical y el tamaño del pixelado.
@@ -29,7 +29,6 @@ Aplica efectos faciales en tiempo real (desenfoque, pixelado, emojis), y un enja
 *   **Script de Ayuda (`run.sh`)**: Facilita la ejecución asegurando que `v4l2loopback` se cargue correctamente.
 
 ![Demo Pixelate-Insects](screenshot1.png)
-
 
 ## 🐧 Instalación (Linux Mint / Ubuntu / Debian-based)
 
@@ -45,59 +44,59 @@ Sigue estos pasos para poner en marcha el proyecto:
 
 **2. Cargar `v4l2loopback` (Importante: Hazlo antes de ejecutar)**
 
-    `pyvirtualcam` requiere que el módulo se cargue con `exclusive_caps=1`. El script `run.sh` proporcionado hace esto automáticamente. Si prefieres hacerlo manualmente:
+`pyvirtualcam` requiere que el módulo se cargue con `exclusive_caps=1`. El script `run.sh` proporcionado hace esto automáticamente. Si prefieres hacerlo manually:
 
-    ```bash
-    # Elige un video_nr libre (e.g., 10), que usarás con --vcam-id
-    sudo modprobe -r v4l2loopback # Descarga si ya estaba cargado (ignora error si no lo estaba)
-    sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VCamFaceFX_10" exclusive_caps=1
-    ```
+```bash
+# Elige un video_nr libre (e.g., 10), que usarás con --vcam-id
+sudo modprobe -r v4l2loopback # Descarga si ya estaba cargado (ignora error si no lo estaba)
+sudo modprobe v4l2loopback devices=1 video_nr=10 card_label="VCamFaceFX_10" exclusive_caps=1
+```
 
-    Verifica que se creó el dispositivo (`ls /dev/video*` debería mostrar `/dev/video10`).
+Verifica que se creó el dispositivo (`ls /dev/video*` debería mostrar `/dev/video10`).
 
 **3. Clonar el Repositorio:**
 
-    ```bash
-    git clone https://github.com/soyunomas/face-python-fx-virtual-cam.git
-    cd face-python-fx-virtual-cam
-    ```
+```bash
+git clone https://github.com/soyunomas/face-python-fx-virtual-cam.git
+cd face-python-fx-virtual-cam
+```
 
 **4. Descargar Fuente Emoji (Noto Color Emoji):**
 
-    Los modos Emoji y Flying Insects requieren la fuente `NotoColorEmoji.ttf`. Esta fuente se distribuye bajo la licencia SIL OFL 1.1.
+Los modos Emoji y Flying Insects requieren la fuente `NotoColorEmoji.ttf`. Esta fuente se distribuye bajo la licencia SIL OFL 1.1.
 
-    ```bash
-    wget -O NotoColorEmoji.ttf https://raw.githubusercontent.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf
-    ```
+```bash
+wget -O NotoColorEmoji.ttf https://raw.githubusercontent.com/googlefonts/noto-emoji/main/fonts/NotoColorEmoji.ttf
+```
 
-    Esto descargará la fuente en el directorio actual. Asegúrate de que el archivo tenga un tamaño razonable (aprox. 15-16 MB).
+Esto descargará la fuente en el directorio actual. Asegúrate de que el archivo tenga un tamaño razonable (aprox. 15-16 MB).
 
 **5. Configurar Entorno Virtual Python (`venv`):**
 
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate
-    # Tu prompt debería cambiar a (venv) $...
-    ```
+```bash
+python3 -m venv venv
+source venv/bin/activate
+# Tu prompt debería cambiar a (venv) $...
+```
 
 **6. Instalar Dependencias de Python:**
 
-    Asegúrate de que tu entorno virtual esté activado (`(venv)` en el prompt). El archivo `requirements.txt` ya debería existir en el repositorio con:
+Asegúrate de que tu entorno virtual esté activado (`(venv)` en el prompt). El archivo `requirements.txt` ya debería existir en el repositorio con:
 
-    ```txt
-    # requirements.txt
-    opencv-python
-    mediapipe
-    numpy
-    pyvirtualcam
-    Pillow
-    ```
+```txt
+# requirements.txt
+opencv-python
+mediapipe
+numpy
+pyvirtualcam
+Pillow
+```
 
-    Instala las dependencias:
+Instala las dependencias:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+pip install -r requirements.txt
+```
 
 ¡Listo! 🎉 Ya deberías tener todo configurado.
 
@@ -105,7 +104,7 @@ Sigue estos pasos para poner en marcha el proyecto:
 
 **Método Recomendado (Usando `run.sh`):**
 
-El script `run.sh` automatiza la recarga del módulo `v4l2loopback` (evitando errores comunes en ejecuciones repetidas) y lanza el script Python.
+El script `run.sh` automatiza la recarga del módulo `v4l2loopback` (evitando errores comunes en ejecuciones repetidas) y lanza el script Python (`webcam-emoji.py`).
 
 1.  **Hazlo Ejecutable (solo la primera vez):**
     ```bash
@@ -213,6 +212,3 @@ python3 webcam-emoji.py --webcam-id 0 --vcam-id 10 --start-mode emoji
 *   **Código del Proyecto:** Este proyecto se distribuye bajo la **Licencia MIT**. Consulta el archivo `LICENSE` (si existe) o la cabecera de los archivos Python para más detalles.
 *   **Dependencias:** Este proyecto utiliza bibliotecas de terceros (`opencv-python`, `mediapipe`, `numpy`, `pyvirtualcam`, `Pillow`), cada una con sus propias licencias (generalmente permisivas como MIT, Apache 2.0, BSD).
 *   **Fuente Emoji:** El script utiliza la fuente **Noto Color Emoji** de Google, que se descarga por separado (ver sección de Instalación) y está licenciada bajo la **SIL Open Font License (OFL) 1.1**.
-```
-
-He intentado que sea claro y cubra todas las funcionalidades y pasos necesarios. ¡Espero que te sea útil!
